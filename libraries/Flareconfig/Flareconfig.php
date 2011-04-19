@@ -1,0 +1,56 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+* @name Flare Config
+* @copyright 2011
+* @author Dwayne Charrington
+* @license http://philsturgeon.co.uk/code/dbad-license
+* @version 1.0
+*/
+
+class Flareconfig extends CI_Driver_Library {
+    
+    /**
+    * Codeigniter instance
+    * 
+    * @var mixed
+    */
+	protected $ci;
+    
+    /**
+    * Currently used driver
+    * 
+    * @var mixed
+    */
+	protected $_driver;
+    
+    /**
+    * Valid drivers
+    * 
+    * @var mixed
+    */
+    protected $valid_drivers = array(
+        'flareconfig_yaml',
+        'flareconfig_xml'
+    );
+    
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+        // Get Codeigniter instance
+        $this->ci = get_instance();
+    }
+    
+    /**
+    * Load a configuration file
+    * 
+    * @param mixed $file
+    */
+    public function load_config($file = '')
+    {
+        return $this->{$this->_driver}->load_config($file);
+    }
+
+}
