@@ -14,13 +14,20 @@ class MY_Loader extends CI_Loader {
 	{
 		parent::__construct();
 	}
-
-	public function config($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
+    
+    /**
+    * Load a yAML config file
+    * 
+    * @param mixed $file
+    * @param mixed $use_sections
+    * @param mixed $fail_gracefully
+    */
+	public function config_yaml($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
 	{
-		$this->load_config($file, $use_sections, $fail_gracefully);
+		$this->load_yaml($file, $use_sections, $fail_gracefully);
 	}
 
-	private function load_config($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
+	private function load_yaml($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
 	{
 		$file = ($file == '') ? 'config' : str_replace(EXT, '', $file);
 		$found = FALSE;
@@ -34,7 +41,7 @@ class MY_Loader extends CI_Loader {
 
 			foreach ($check_locations as $location)
 			{
-				$file_path = $path.'config/'.$location.EXT;
+				$file_path = $path.'config/'.$location.".yaml";
 
 				if (in_array($file_path, $this->is_loaded, TRUE))
 				{
