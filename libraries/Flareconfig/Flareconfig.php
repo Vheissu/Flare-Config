@@ -58,11 +58,24 @@ class Flareconfig extends CI_Driver_Library {
     * Get a config item
     * 
     * @param mixed $name
-    * @return void
+    * @returns void
     */
     public function item($name)
     {
         return $this->{$this->_driver}->item($name);
+    }
+    
+    /**
+    * Set a config item
+    * 
+    * @param mixed $name
+    * @param mixed $value
+    * @param mixed $override
+    * @returns void
+    */
+    public function set_item($name, $value, $override = true)
+    {
+        return $this->{$this->_driver}->set_item($name, $value, $override);
     }
 
 }
