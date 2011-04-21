@@ -8,6 +8,7 @@
 * @version 1.0
 */
 
+// Required Yaml parsing file to parse out Yaml config files
 require_once APPPATH . "third_party/Yaml/Yaml.php";
 
 class Flareconfig_yaml extends CI_Driver_Library {
