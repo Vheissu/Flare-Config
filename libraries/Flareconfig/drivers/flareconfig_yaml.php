@@ -96,7 +96,21 @@ class Flareconfig_yaml extends CI_Driver_Library {
             }
             
             // Our Yaml contents returned as an array
-            $this->_config = $this->_yaml->load($file_path);
+            $yaml_array = $this->_yaml->load($file_path);
+            
+            // Set the config options
+            foreach ($yaml_array AS $key => $val)
+            {
+                // If already set, don't overwrite
+                if (array_key_exists($name, $this->_config))
+                {
+                    continue;
+                }
+                else
+                {
+                    $this->_config[$key] = $val;   
+                }
+            }
 
             $this->is_loaded[] = $file_path;
 
