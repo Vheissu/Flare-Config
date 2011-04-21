@@ -47,10 +47,22 @@ class Flareconfig extends CI_Driver_Library {
     * Load a configuration file
     * 
     * @param mixed $file
+    * @returns void
     */
     public function load_config($file = '')
     {
         return $this->{$this->_driver}->load_config($file);
+    }
+    
+    /**
+    * Get a config item
+    * 
+    * @param mixed $name
+    * @return void
+    */
+    public function item($name)
+    {
+        return $this->{$this->_driver}->item($name);
     }
 
 }

@@ -11,7 +11,12 @@
 require_once APPPATH . "third_party/Yaml/Yaml.php";
 
 class Flareconfig_yaml extends CI_Driver_Library {
-
+    
+    /**
+    * Codeigniter instance
+    * 
+    * @var mixed
+    */
 	protected $ci;
     
     /**
@@ -21,18 +26,33 @@ class Flareconfig_yaml extends CI_Driver_Library {
     */
     protected $_yaml;
     
-    public $is_loaded = array();
-    public $config = array();
+    /**
+    * Config values
+    * 
+    * @var mixed
+    */
+    protected $_config = array();
+    
+    /**
+    * Is loaded?
+    * 
+    * @var mixed
+    */
+    protected $is_loaded = array();
+    
+    /**
+    * Config file paths
+    * 
+    * @var mixed
+    */
     public $_config_paths = array(APPPATH);
     
     /**
     * Constructor function
-    * 
     */
     public function __construct()
     {
         $this->ci     = get_instance();
-        $this->config = get_config();
         $this->_yaml  = new Yaml;
     }
     
@@ -50,9 +70,8 @@ class Flareconfig_yaml extends CI_Driver_Library {
 
         foreach ($this->_config_paths as $path)
         {
-            $check_locations = defined('ENVIRONMENT')
-                ? array(ENVIRONMENT.'/'.$file, $file)
-                : array($file);
+            // Check if we have an environment variable set
+            $check_locations = defined('ENVIRONMENT') ? array(ENVIRONMENT.'/'.$file, $file) : array($file);
 
             foreach ($check_locations as $location)
             {
@@ -77,7 +96,7 @@ class Flareconfig_yaml extends CI_Driver_Library {
             }
             
             // Our Yaml contents returned as an array
-            $yaml_contents = $this->_yaml->load($file_path);
+            $this->_config = $this->_yaml->load($file_path);
 
             $this->is_loaded[] = $file_path;
 
@@ -91,6 +110,52 @@ class Flareconfig_yaml extends CI_Driver_Library {
         }
 
         return TRUE;
+    }
+    
+    /**
+    * Config item
+    * Will get a config item value
+    * 
+    * @param mixed $name
+    * @returns void
+    */
+    public function item($name)
+    {
+        if (array_key_exists($name, $this->_config))
+        {
+            return $this->_config[$name];
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    /**
+    * Set item
+    * Sets a new config key/value pair
+    * 
+    * @param mixed $name
+    * @param mixed $value
+    * @param mixed $override
+    * @returns void
+    */
+    public function set_item($name, $value, $override = true)
+    {
+        // Is there already a config item of the same name?
+        if (array_key_exists($name, $this->_config))
+        {
+            // If we can overwrite, overwrite it
+            if ($override === true)
+            {
+                $this->_config[$name] = $value;
+            }
+            // You're not touchin' a thing boy.
+            else
+            {
+                return false;
+            }
+        }
     }
 
 }
