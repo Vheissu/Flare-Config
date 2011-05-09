@@ -67,12 +67,21 @@ class Flareconfig_xml extends CI_Driver_Library {
             }
             
             // Load our XML file
-            $yaml_contents = simplexml_load_file($file_path);
+            $xml_contents = simplexml_load_file($file_path);
+            
+            // If we have XML contents
+            if ($xml_contents === TRUE)
+            {
+                $this->is_loaded[] = $file_path;
+                
+                foreach ($xml_contents AS $key => $val)
+                {
+                    $this->config[$key] = $val;
+                }
 
-            $this->is_loaded[] = $file_path;
-
-            $loaded = TRUE;
-            log_message('debug', 'Config file loaded: '.$file_path);
+                $loaded = TRUE;
+                log_message('debug', 'Config file loaded: '.$file_path);   
+            }
         }
 
         if ($loaded === FALSE)

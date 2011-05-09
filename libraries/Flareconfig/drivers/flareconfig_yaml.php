@@ -4,7 +4,7 @@
 * @name Flare Config
 * @copyright 2011
 * @author Dwayne Charrington
-* @license http://philsturgeon.co.uk/code/dbad-license
+* @license Do What You Want, As Long As You Attribute Me (DWYWALAYAM) Licence
 * @version 1.0
 */
 
