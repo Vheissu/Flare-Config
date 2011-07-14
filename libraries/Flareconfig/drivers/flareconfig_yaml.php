@@ -57,6 +57,8 @@ class Flareconfig_yaml extends CI_Driver_Library {
         $this->_yaml  = new Yaml;
     }
     
+    public function decorate() { }
+    
     /**
     * Load our Yaml configuration file
     * 
@@ -103,7 +105,7 @@ class Flareconfig_yaml extends CI_Driver_Library {
             foreach ($yaml_array AS $key => $val)
             {
                 // If already set, don't overwrite
-                if (array_key_exists($name, $this->_config))
+                if (array_key_exists($key, $this->_config))
                 {
                     continue;
                 }
