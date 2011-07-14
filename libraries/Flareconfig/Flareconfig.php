@@ -66,6 +66,15 @@ class Flareconfig extends CI_Driver_Library {
     }
     
     /**
+    * Get all config items
+    * 
+    */
+    public function items()
+    {
+        return $this->{$this->_driver}->items();
+    }
+    
+    /**
     * Set a config item
     * 
     * @param mixed $name

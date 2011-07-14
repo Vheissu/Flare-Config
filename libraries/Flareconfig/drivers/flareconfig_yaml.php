@@ -149,6 +149,19 @@ class Flareconfig_yaml extends CI_Driver_Library {
     }
     
     /**
+    * Config items
+    * Returns all config items in class array
+    * 
+    */
+    public function items()
+    {
+        if ( is_array($this->_config) AND !empty($this->_config) )
+        {
+            return $this->_config;
+        }
+    }
+    
+    /**
     * Set item
     * Sets a new config key/value pair
     * 
