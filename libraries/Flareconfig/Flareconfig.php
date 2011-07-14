@@ -22,7 +22,7 @@ class Flareconfig extends CI_Driver_Library {
     * 
     * @var mixed
     */
-	protected $_driver;
+	protected $_driver = 'flareconfig_yaml';
     
     /**
     * Valid drivers
