@@ -4,7 +4,7 @@
 * @name Flare Config
 * @copyright 2011
 * @author Dwayne Charrington
-* @license http://philsturgeon.co.uk/code/dbad-license
+* @license http://www.apache.org/licenses/LICENSE-2.0.html
 * @version 1.0
 */
 
