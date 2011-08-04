@@ -8,6 +8,8 @@ class MY_Config extends CI_Config {
     {
         parent::__construct();
         $this->ci_ = get_instance();
+        
+        $this->ci_->load->driver('flareconfig');
     }
     
     /**
