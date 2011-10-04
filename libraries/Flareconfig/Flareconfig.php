@@ -40,7 +40,7 @@ class Flareconfig extends CI_Driver_Library {
     public function __construct()
     {
         // Get Codeigniter instance
-        $this->ci = get_instance();
+        $this->ci =& get_instance();
     }
     
     /**
@@ -85,6 +85,11 @@ class Flareconfig extends CI_Driver_Library {
     public function set_item($name, $value, $override = true)
     {
         return $this->{$this->_driver}->set_item($name, $value, $override);
+    }
+    
+    public function set_driver($driver)
+    {
+        $this->_driver = $driver;
     }
 
 }

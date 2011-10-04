@@ -2,14 +2,29 @@
 
 class MY_Config extends CI_Config {
     
-    protected $ci_;
-    
     public function __construct()
     {
         parent::__construct();
-        $this->ci_ = get_instance();
         
-        $this->ci_->load->driver('flareconfig');
+        $this->load->driver('flareconfig');
+    }
+    
+    /**
+    * Config Type
+    * Set the type of config file to use
+    * 
+    * @param mixed $type
+    */
+    public function config_type($type)
+    {
+        if ( $type == 'yaml' )
+        {
+            $this->flareconfig->set_driver('flareconfig_yaml');
+        }
+        elseif ( $type == 'xml' )
+        {
+           $this->flareconfig->set_driver('flareconfig_xml'); 
+        }        
     }
     
     /**
@@ -18,9 +33,9 @@ class MY_Config extends CI_Config {
      * @access    public
      * All variables besides $file aren't used. Just here for legacy support.
      */
-    function load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
+    public function load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
     {
-        return $this->ci_->flareconfig->load_config($file);
+        return $this->flareconfig->load_config($file);
     }
     
     /**
@@ -28,19 +43,20 @@ class MY_Config extends CI_Config {
      *
      * All variables except $item aren't used. Just here for legacy support.
      */
-    function item($item, $index = '')
+    public function item($item, $index = '')
     {
-        return $this->ci_->flareconfig->item($item);
+        return $this->flareconfig->item($item);
     
+    }
     
     /**
      * Fetches all config file items
      *
      * All variables except $item aren't used. Just here for legacy support.
      */
-    function items()
+    public function items()
     {
-        return $this->ci_->flareconfig->items();
+        return $this->flareconfig->items();
     }
     
     /**
@@ -51,9 +67,9 @@ class MY_Config extends CI_Config {
      *
      * @access    public
      */
-    function slash_item($item)
+    public function slash_item($item)
     {
-        $config_item = $this->ci_->flareconfig->item($item); 
+        $config_item = $this->flareconfig->item($item); 
         $config_item = rtrim($config_item, '/').'/'; 
 
         return $config_item;
@@ -67,9 +83,9 @@ class MY_Config extends CI_Config {
      * @param    string    the config item value
      * @return    void
      */
-    function set_item($item, $value)
+    public function set_item($item, $value)
     {
-        $this->ci_->flareconfig->set_item($item, $value);
+        $this->flareconfig->set_item($item, $value);
     }
     
 }
