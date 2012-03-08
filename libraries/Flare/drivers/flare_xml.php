@@ -2,13 +2,13 @@
 
 /**
 * @name Flare Config
-* @copyright 2011
+* @copyright 2012
 * @author Dwayne Charrington
-* @license http://philsturgeon.co.uk/code/dbad-license
+* @license http://www.apache.org/licenses/LICENSE-2.0.html
 * @version 1.0
 */
 
-class Flareconfig_xml extends CI_Driver_Library {
+class Flare_xml extends CI_Driver_Library {
 
 	protected $ci;
     

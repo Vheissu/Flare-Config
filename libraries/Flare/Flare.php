@@ -2,13 +2,13 @@
 
 /**
 * @name Flare Config
-* @copyright 2011
+* @copyright 2012
 * @author Dwayne Charrington
 * @license http://www.apache.org/licenses/LICENSE-2.0.html
 * @version 1.0
 */
 
-class Flareconfig extends CI_Driver_Library {
+class Flare extends CI_Driver_Library {
     
     /**
     * Codeigniter instance
@@ -22,7 +22,7 @@ class Flareconfig extends CI_Driver_Library {
     * 
     * @var mixed
     */
-	protected $_driver = 'flareconfig_yaml';
+	protected $_driver = 'yaml';
     
     /**
     * Valid drivers
@@ -87,6 +87,13 @@ class Flareconfig extends CI_Driver_Library {
         return $this->{$this->_driver}->set_item($name, $value, $override);
     }
     
+	/**
+	* Set Driver
+	*
+	* Set the config file parsing driver to use
+	*
+	* @param string $driver
+	*
     public function set_driver($driver)
     {
         $this->_driver = $driver;

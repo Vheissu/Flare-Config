@@ -2,7 +2,7 @@
 
 /**
 * @name Flare Config
-* @copyright 2011
+* @copyright 2012
 * @author Dwayne Charrington
 * @license http://www.apache.org/licenses/LICENSE-2.0.html
 * @version 1.0
@@ -11,7 +11,7 @@
 // Required Yaml parsing file to parse out Yaml config files
 require_once APPPATH . "third_party/Yaml/Yaml.php";
 
-class Flareconfig_yaml extends CI_Driver_Library {
+class Flare_yaml extends CI_Driver_Library {
     
     /**
     * Codeigniter instance
