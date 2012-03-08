@@ -8,7 +8,7 @@
 * @version 1.0
 */
 
-class Flare_xml extends CI_Driver_Library {
+class Flare_xml extends CI_Driver {
 
 	protected $ci;
     

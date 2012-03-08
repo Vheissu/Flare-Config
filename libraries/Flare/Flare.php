@@ -15,23 +15,23 @@ class Flare extends CI_Driver_Library {
     * 
     * @var mixed
     */
-	protected $ci;
+	public $ci;
     
     /**
     * Currently used driver
     * 
     * @var mixed
     */
-	protected $_driver = 'yaml';
+	public $_driver = 'yaml';
     
     /**
     * Valid drivers
     * 
     * @var mixed
     */
-    protected $valid_drivers = array(
-        'flareconfig_yaml',
-        'flareconfig_xml'
+    public $valid_drivers = array(
+        'flare_yaml',
+        'flare_xml'
     );
     
     /**
@@ -94,6 +94,7 @@ class Flare extends CI_Driver_Library {
 	*
 	* @param string $driver
 	*
+	*/
     public function set_driver($driver)
     {
         $this->_driver = $driver;

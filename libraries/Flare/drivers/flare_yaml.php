@@ -11,7 +11,7 @@
 // Required Yaml parsing file to parse out Yaml config files
 require_once APPPATH . "third_party/Yaml/Yaml.php";
 
-class Flare_yaml extends CI_Driver_Library {
+class Flare_yaml extends CI_Driver {
     
     /**
     * Codeigniter instance

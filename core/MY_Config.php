@@ -6,7 +6,7 @@ class MY_Config extends CI_Config {
     {
         parent::__construct();
         
-        $this->load->driver('flareconfig');
+        $this->load->driver('flare');
     }
     
     /**
@@ -19,23 +19,29 @@ class MY_Config extends CI_Config {
     {
         if ( $type == 'yaml' )
         {
-            $this->flareconfig->set_driver('flareconfig_yaml');
+            $this->flare->set_driver('yaml');
         }
         elseif ( $type == 'xml' )
         {
-           $this->flareconfig->set_driver('flareconfig_xml'); 
+           $this->flare->set_driver('xml'); 
         }        
     }
     
     /**
      * Load Config File
      *
-     * @access    public
      * All variables besides $file aren't used. Just here for legacy support.
+     *
+     * @access    public
+     * @param mixed $file
+     * @param bool $use_sections
+     * @param bool $fail_gracefully
+     *
+     * @return bool
      */
     public function load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
     {
-        return $this->flareconfig->load_config($file);
+        return $this->flare->load_config($file);
     }
     
     /**
@@ -45,7 +51,7 @@ class MY_Config extends CI_Config {
      */
     public function item($item, $index = '')
     {
-        return $this->flareconfig->item($item);
+        return $this->flare->item($item);
     
     }
     
@@ -56,7 +62,7 @@ class MY_Config extends CI_Config {
      */
     public function items()
     {
-        return $this->flareconfig->items();
+        return $this->flare->items();
     }
     
     /**
@@ -69,7 +75,7 @@ class MY_Config extends CI_Config {
      */
     public function slash_item($item)
     {
-        $config_item = $this->flareconfig->item($item); 
+        $config_item = $this->flare->item($item); 
         $config_item = rtrim($config_item, '/').'/'; 
 
         return $config_item;
@@ -85,7 +91,7 @@ class MY_Config extends CI_Config {
      */
     public function set_item($item, $value)
     {
-        $this->flareconfig->set_item($item, $value);
+        $this->flare->set_item($item, $value);
     }
     
 }
