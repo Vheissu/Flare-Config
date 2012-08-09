@@ -17,11 +17,11 @@ class MY_Config extends CI_Config {
     */
     public function config_type($type)
     {
-        if ( $type == 'yaml' )
+        if ($type == 'yaml')
         {
             $this->flare->set_driver('yaml');
         }
-        elseif ( $type == 'xml' )
+        elseif ($type == 'xml')
         {
            $this->flare->set_driver('xml'); 
         }        
